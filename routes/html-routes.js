@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
     app.get("/", function(req, res){
-        db.Article.find({}).limit(20).then(function(dbArticle){
+        db.Article.find({}).limit(20).populate("comment").then(function(dbArticle){
             res.render("index", {
                 articles: dbArticle
             });

@@ -22,4 +22,20 @@ module.exports = function (app) {
             res.send("Scraping Complete");
         });
     });
+
+    app.get("/api/articles/all", function(req, res){
+        db.Article.find({}).then(function(result){
+            res.send(result);
+        })
+    })
+
+    app.post("/api/comment/:id", function(req, res){
+        db.Comment.create(req.body).then(function(dbComment){
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true });
+        }).then(function(dbComment){
+            res.json(dbComment);
+        }).catch(function(err){
+            res.json(err);
+        });
+    });
 }

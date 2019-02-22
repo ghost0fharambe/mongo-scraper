@@ -1,7 +1,20 @@
 {{#each articles}}
-<div class="container" id="{{this.id}}">
-    <h1>{{this.title}}</h1>
-    <p>{{this.description}}</p>
-    <a href="{{this.link}}">{{this.link}}</a>
+<div class="container">
+    <div class="container backgroundColor">
+        <h1 id="{{this.id}}">{{this.title}}</h1>
+        <p>{{this.description}}</p>
+        <a href="http://stackoverflow.com/{{this.link}}">Link</a>
+        <form class="clearfix mb-4 d-flex justify-content-center" action="POST">
+            <div class="form-group col-md-8">
+                <h2 class="text-center"><label for="new-comment">Comment</label></h2>
+                <input name="comment" type="text" id="new-comment" class="form-control" placeholder="Comment">
+                <input name="username" type="text" id="userName" class="form-control" placeholder="Username">
+                <button id="comment-submit" class="btn btn-primary mt-2 float-right">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>
 {{/each}}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/new-comment.js"></script>
