@@ -1,9 +1,11 @@
-{{#each articles}}
 <div class="container">
     <div class="container backgroundColor">
-        <h1 id="{{this.id}}">{{this.title}}</h1>
-        <p>{{this.description}}</p>
-        <a href="http://stackoverflow.com/{{this.link}}">Link</a>
+        <h1 id="{{article.id}}">{{article.title}}</h1>
+        <p>{{article.description}}</p>
+        <a href="http://stackoverflow.com/{{article.link}}">Link</a>
+        {{#each article.comments}}
+        <p>{{this.body}}</p>
+        {{/each}}
         <form class="clearfix mb-4 d-flex justify-content-center" action="POST">
             <div class="form-group col-md-8">
                 <h2 class="text-center"><label for="new-comment">Comment</label></h2>
@@ -14,7 +16,5 @@
         </form>
     </div>
 </div>
-{{/each}}
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/new-comment.js"></script>

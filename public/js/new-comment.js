@@ -3,7 +3,7 @@ var $comment = $("#new-comment").val().trim();
 var $id = $("h1").attr("id");
 var $submitBtn = $("#comment-submit");
 
-API = {
+var API = {
     submitComment: function (id, data) {
         return $.ajax({
             headers: {
@@ -27,7 +27,7 @@ var handleSubmit = function (event) {
 
     API.submitComment($id, data).then(function () {
         console.log(data);
-        //location.reload();
+        location.reload();
     });
 };
 
