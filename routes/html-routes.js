@@ -14,7 +14,7 @@ module.exports = function (app) {
 
         db.Article.find({
             _id: req.params.id
-        }).then(function (dbArticle) {
+        }).then(function (dbArticle) { 
             article = dbArticle[0];
             return db.Comment.find({
                 _id: article.comments

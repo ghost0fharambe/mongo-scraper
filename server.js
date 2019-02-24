@@ -43,6 +43,7 @@ app.get("/test", function (req, res) {
     title: "test",
     link: "test.link"
   };
+  
   // Create a new Article using the `result` object built from scraping
   db.Article.create(result)
     .then(function (dbArticle) {
@@ -54,10 +55,10 @@ app.get("/test", function (req, res) {
       console.log(err);
     });
 });
+
+//Routes
 require("./routes/api-routes")(app);
 require("./routes/html-routes")(app);
-// // Send a message to the client
-// res.send("Scrape Complete");
 
 // Start the server
 app.listen(PORT, function () {
