@@ -27,7 +27,7 @@ var handleSubmit = function (event) {
 
     API.submitComment($id, data).then(function () {
         console.log(data);
-        location.reload();
+        window.location.reload();
     });
 };
 

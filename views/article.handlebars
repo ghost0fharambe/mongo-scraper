@@ -1,20 +1,48 @@
-<div class="container">
-    <div class="container backgroundColor">
-        <h1 id="{{article.id}}">{{article.title}}</h1>
-        <p>{{article.description}}</p>
-        <a href="http://stackoverflow.com/{{article.link}}">Link</a>
-        {{#each article.comments}}
-        <p>{{this.body}}</p>
-        {{/each}}
-        <form class="clearfix mb-4 d-flex justify-content-center" action="POST">
-            <div class="form-group col-md-8">
-                <h2 class="text-center"><label for="new-comment">Comment</label></h2>
+<div class="card mx-auto" style="width: 50rem;">
+    <h1 class="card-title card-header" id="{{article.id}}">{{article.title}}</h1>
+    <div class="card-body">
+        <a class="card-subtitle mb-2 text-muted"
+            href="http://stackoverflow.com/{{article.link}}">http://stackoverflow.com/{{article.link}}</a>
+        <p class="card-text">{{article.description}}</p>
+    </div>
+</div>
+
+<div class="row">
+    {{#each article.comments}}
+    <div class="col-sm-6">
+        <div class="card mx-auto" style="width: 18rem;">
+            <div class="card">
+                <div class="card-header">
+                    Comment
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{this.body}}</p>
+                        <footer class="blockquote-footer"><cite title="Source Title">{{this.userName}}</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+
+<div class="card mx-auto" style="width: 50rem;">
+    <form class="clearfix mb-4 d-flex justify-content-center" action="POST">
+        <div class="form-group col-md-8">
+            <div class="card-body">
+                <h2 class="text-center class=" card-title card-header""><label for="new-comment">Comment</label>
+                </h2>
                 <input name="comment" type="text" id="new-comment" class="form-control" placeholder="Comment">
                 <input name="username" type="text" id="userName" class="form-control" placeholder="Username">
                 <button id="comment-submit" class="btn btn-primary mt-2 float-right">Submit</button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
+
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/new-comment.js"></script>
