@@ -19,7 +19,7 @@ var getUrlParameter = function (name) {
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
-let pageNum = parseInt(getUrlParameter("pageNum"));
+let pageNum = parseInt(getUrlParameter("pageNum")) || 1;
 let size;
 
 var handleClick = function () {
