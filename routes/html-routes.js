@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function (app) {
     app.get("/", function (req, res) {
-        db.Article.find({}).limit(10).then(function (dbArticle) {
+        db.Article.find({ tag: "javascript" }).limit(10).then(function (dbArticle) {
             res.render("index", {
                 articles: dbArticle
             });
