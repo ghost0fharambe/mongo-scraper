@@ -23,10 +23,8 @@ var handleSubmit = function (event) {
         userName: $("#userName").val().trim(),
         body: $("#new-comment").val().trim()
     };
-    console.log(data);
 
     API.submitComment($id, data).then(function () {
-        console.log(data);
         window.location.reload();
     });
 };

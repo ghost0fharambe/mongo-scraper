@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
     app.get("/", function(req, res){
-        db.Article.find({}).limit(20).then(function(dbArticle){
+        db.Article.find({}).limit(10).then(function(dbArticle){
             res.render("index", {
                 articles: dbArticle
             });
@@ -17,10 +17,28 @@ module.exports = function(app) {
             return db.Comment.find({ _id: article.comments })
         }).then(function(dbComments){
             article.comments = dbComments;
-            console.log(article);
             res.render("article", {
                 article: article
             });
+        });
+    });
+
+    app.get("/articles", function(req, res){
+        var pageNum = parseInt(req.query.pageNum);
+        var size = parseInt(req.query.size);
+        var query = {};
+
+        query.skip = size * (pageNum - 1);
+        query.limit = size;
+
+        db.Article.find({}, {}, query, function(err, dbArticles){
+            if (err) {
+                res.send(err);
+            } else {
+                res.render("index", {
+                    articles: dbArticles
+                });
+            };
         });
     });
 }

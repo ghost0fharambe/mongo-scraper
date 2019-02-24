@@ -4,6 +4,7 @@ var cheerio = require("cheerio");
 
 module.exports = function (app) {
     app.get("/api/scrape", function (req, res) {
+        //Scrapes StackOverflow articles tagged with javascript
         axios.get("https://stackoverflow.com/questions/tagged/javascript").then(function (response) {
             var $ = cheerio.load(response.data);
             $("div h3").each(function (i, element) {
@@ -12,9 +13,10 @@ module.exports = function (app) {
                 result.title = $(this).children("a").text();
                 result.link = $(this).children("a").attr("href");
                 result.description = $(this).siblings(".excerpt").text();
+                result.tag = "javascript"
 
                 db.Article.create(result).then(function (dbArticle) {
-                    console.log(dbArticle);
+                    //console.log(dbArticle);
                 }).catch(function (err) {
                     console.log(err);
                 });

@@ -3,16 +3,17 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <h3>Examples:</h3>
+        <h2>Stack Overflow Scraper</h2>
+        <h3>Articles</h3>
         <ul id="example-list" class="list-group">
           {{#each articles}}
           <li id="{{this.id}}" class="list-group-item">
-            <a href="{{this.link}}">{{this.title}}</a>
+            <a target="_blank" href="http://stackoverflow.com/{{this.link}}">{{this.title}}</a>
             <p>{{this.description}}</p>
           </li>
           {{/each}}
         </ul>
+        <button id="next-page">Next Page</button>
       </div>
     </div>
   </div>
