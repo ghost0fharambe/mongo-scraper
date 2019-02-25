@@ -4,9 +4,9 @@ var cheerio = require("cheerio");
 
 module.exports = function (app) {
     app.get("/api/scrape", function (req, res) {
-        //Scrapes StackOverflow articles tagged with javascript
-        //This is the default scrape that occurs when the site is loaded
-        axios.get("https://stackoverflow.com/questions/tagged/javascript").then(function (response) {
+        //Scrapes StackOverflow articles
+        //This is the default scrape that occurs
+        axios.get("https://stackoverflow.com/questions").then(function (response) {
             var $ = cheerio.load(response.data);
             $("div h3").each(function (i, element) {
                 var result = {};

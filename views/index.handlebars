@@ -7,10 +7,13 @@
         <h3>Articles</h3>
         <ul id="example-list" class="list-group">
           {{#each articles}}
+          <br>
           <li id="{{this.id}}" class="list-group-item">
-            <a class="btn btn-secondary" target="_blank" href="http://stackoverflow.com/{{this.link}}">{{this.title}}</a>
+            <a class="btn btn-secondary" target="_blank"
+              href="http://stackoverflow.com/{{this.link}}">{{this.title}}</a>
             <p>{{this.description}}</p>
           </li>
+          <br>
           {{/each}}
         </ul>
         <button class="btn btn-danger" id="prev-page">Previous Page</button>
