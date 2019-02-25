@@ -8,7 +8,7 @@
         <ul id="example-list" class="list-group">
           {{#each articles}}
           <li id="{{this.id}}" class="list-group-item">
-            <a target="_blank" href="http://stackoverflow.com/{{this.link}}">{{this.title}}</a>
+            <a class="btn btn-secondary" target="_blank" href="http://stackoverflow.com/{{this.link}}">{{this.title}}</a>
             <p>{{this.description}}</p>
           </li>
           {{/each}}

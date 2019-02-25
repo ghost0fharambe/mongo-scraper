@@ -35,10 +35,22 @@ var handleNextPage = function () {
 
 var handlePrevPage = function () {
     prevPage = pageNum - 1;
+    if (prevPage < 1) {
+        prevPage = 1;
+    }
     size = 10;
     fnObj.changePage(prevPage, size);
 };
 
+var handleActiveChange = function () {
+    $(this).hasClass("active") ? $(this).removeClass("active") : $(this).addClass("active")
+};
+
+// var removeClass = function () {
+//     $(this).removeClass("active");
+// };
+
 $li.on("click", handleClick);
 $nextPage.on("click", handleNextPage);
 $prevPage.on("click", handlePrevPage);
+$li.hover(handleActiveChange);
